@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { View, Text } from 'react-native';
 import {sellFish} from './redux/actions';
 import FishCreator from './fishCreator.js';
 
@@ -42,17 +43,18 @@ class ConnectedInventoryContainer extends React.Component {
 
 	createInventoryContainer() {
 		return (
-			<div key={this.state.title} className={inventoryContainerClassName}> 
-				<h2>{this.state.title}</h2> 
+			<View>
+				<Text>{this.state.title}</Text>
 				{this.createGoldText()}
 				{this.createFishList()}
-			</div>
+			</View>
 		);
 	}
 
-	createGoldText() {		
+	createGoldText() {
+		let text = 'Gold: ' + this.state.gold;
 		if(this.state.gold != null) {
-			return (<h4 key="gold">Gold: {this.state.gold}</h4>);
+			return (<Text>{text}</Text>)
 		}
 	}
 

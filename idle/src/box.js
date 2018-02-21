@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { View, Text, Button } from 'react-native';
 import {reelFish} from './redux/actions'
 //import Progress from 'react-progressbar';
 
@@ -47,11 +48,11 @@ class ConnectedBox extends React.Component {
 
 	createBoxElement() {
 		let boxElement = (
-			<div className={this.state.className}> 
-				<h4>{this.state.name}</h4>
+			<View>
+				<Text>{this.state.name}</Text>
 				{this.createButton()} 
 				{this.createProgressBar()}
-			</div>
+			</View>
 		);
 		return boxElement;
 	}
@@ -61,9 +62,9 @@ class ConnectedBox extends React.Component {
 		//	return;
 		//console.log("draw", this.state);
 		return (
-			<div className={barBgClassName}>
-				{this.state.fillAmount}
-			</div>
+			<View>
+				<Text>{this.state.fillAmount}</Text>
+			</View>
 		);
 	}
 
@@ -81,9 +82,8 @@ class ConnectedBox extends React.Component {
 
 	createButton() {
 		return (
-			<button onClick={this.buttonClicked.bind(this)}> 
-			Reel
-			</button>
+			<Button onPress={this.buttonClicked.bind(this)} title={'Reel'}>
+			</Button>
 		);
 	}	
 

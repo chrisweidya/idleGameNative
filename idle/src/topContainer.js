@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Box from './box.js';
+import { View, Text } from 'react-native';
 
 const topContainerClassName= "top container";
 
@@ -31,7 +31,7 @@ class ConnectedTopContainer extends React.Component {
 	createMessages() {
 		let messages;
 		messages = this.state.messages.map((message, index)=> {
-			return (<p key={index + "message"}>{message} </p>);
+			return (<Text> {message} </Text>);
 		});
 
 		return messages;
@@ -40,9 +40,9 @@ class ConnectedTopContainer extends React.Component {
 
 	createTopContainer() {
 		return (
-			<div className={topContainerClassName}>
+			<View>
 				{this.createMessages()}
-			</div>
+			</View>
 		);
 	}
 

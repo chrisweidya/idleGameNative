@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { View, Text } from 'react-native';
 import {changeLocation} from './redux/actions';
 import {resetFish} from './redux/actions';
 //import Dropdown from 'react-dropdown';
@@ -72,10 +73,10 @@ class ConnectedFishingContainer extends React.Component {
 
 	createLeftContainer() {
 		return (
-			<div key={this.state.title} className={fishingContainerClassName}> 
-				<h2>{this.state.title}</h2> 
+			<View> 
+				<Text>{this.state.title}</Text> 
 				{this.createBoxes()}
-			</div>
+			</View>
 		);
 		/*
 		return (
