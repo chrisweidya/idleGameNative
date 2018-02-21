@@ -1,1 +1,1 @@
-# idleGameNative
+# Idle Game Native
