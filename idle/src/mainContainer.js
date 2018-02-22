@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
+import { styles } from './styles';
 import TopContainer from './topContainer.js';
 import InventoryContainer from './inventoryContainer.js';
 import FishingContainer from './fishingContainer.js';
@@ -25,16 +26,19 @@ export default class MainContainer extends React.Component {
 	}
 
 	createMainContainer() {
+		console.log("fdsf" + styles.container);
 		return (
-			<View>
+			<View style={styles.container}>
 				<TopContainer>
 				</TopContainer>
 				<FishingContainer>
 				</FishingContainer>
-				<BuyContainer>
-				</BuyContainer>
-				<InventoryContainer>
-				</InventoryContainer>
+				<View style={styles.bottomContainer}>
+					<BuyContainer>
+					</BuyContainer>
+					<InventoryContainer>
+					</InventoryContainer>
+				</View>
 			</View>
 		);
 	}

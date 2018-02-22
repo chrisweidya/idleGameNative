@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { View, Text, Button } from 'react-native';
 import {reelFish} from './redux/actions'
+import AnimatedBar from 'react-native-animated-bar';
+import { styles } from './styles';
 //import Progress from 'react-progressbar';
 
 const barBgClassName = "bar-bg";
@@ -9,7 +11,7 @@ const barBgClassName = "bar-bg";
 const mapStateToProps = state => ({
 	fish: state.fish,
 	intervalDecrease: state.settings.barDecreaseInterval,
-	fillAmount: state.fish.health/state.fish.maxHealth*100,
+	fillAmount: state.fish.health/state.fish.maxHealth,
 	tier: state.location.tier,
 	str: state.stats.str
 });
@@ -50,8 +52,8 @@ class ConnectedBox extends React.Component {
 		let boxElement = (
 			<View>
 				<Text>{this.state.name}</Text>
-				{this.createButton()} 
 				{this.createProgressBar()}
+				{this.createButton()} 
 			</View>
 		);
 		return boxElement;
@@ -62,8 +64,8 @@ class ConnectedBox extends React.Component {
 		//	return;
 		//console.log("draw", this.state);
 		return (
-			<View>
-				<Text>{this.state.fillAmount}</Text>
+			<View style={styles.progressContainer}>
+				<AnimatedBar progress={this.state.fillAmount}/>
 			</View>
 		);
 	}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
+import { styles } from './styles';
 
 const topContainerClassName= "top container";
 
@@ -31,7 +32,7 @@ class ConnectedTopContainer extends React.Component {
 	createMessages() {
 		let messages;
 		messages = this.state.messages.map((message, index)=> {
-			return (<Text> {message} </Text>);
+			return (<Text key={index} style={styles.messageText}> {message} </Text>);
 		});
 
 		return messages;
@@ -40,7 +41,7 @@ class ConnectedTopContainer extends React.Component {
 
 	createTopContainer() {
 		return (
-			<View>
+			<View style={styles.topBar}>
 				{this.createMessages()}
 			</View>
 		);

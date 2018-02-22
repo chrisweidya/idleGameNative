@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { View, Text } from 'react-native';
 import {changeLocation} from './redux/actions';
 import {resetFish} from './redux/actions';
+import { styles } from './styles';
 //import Dropdown from 'react-dropdown';
 import Box from './box.js';
 
@@ -73,7 +74,7 @@ class ConnectedFishingContainer extends React.Component {
 
 	createLeftContainer() {
 		return (
-			<View> 
+			<View style={styles.fishingContainer}> 
 				<Text>{this.state.title}</Text> 
 				{this.createBoxes()}
 			</View>

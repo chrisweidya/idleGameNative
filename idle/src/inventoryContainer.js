@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import {sellFish} from './redux/actions';
 import FishCreator from './fishCreator.js';
 
@@ -65,9 +65,9 @@ class ConnectedInventoryContainer extends React.Component {
 				return;
 			else
 				return (
-					<div key={fish[0] + fish[1] + "button"} className={fishItemClassName}>
-						<button onClick={this.sellFish.bind(this, fish[0])}> {"Sell " + fish[1] + " " + fish[0]} </button>
-					</div>
+					<View key={fish[0] + fish[1] + "button"}>
+						<Button onPress={this.sellFish.bind(this, fish[0])} title={"Sell " + fish[1] + " " + fish[0]}></Button>
+					</View>
 				);
 		});
 		return caughtFishes;

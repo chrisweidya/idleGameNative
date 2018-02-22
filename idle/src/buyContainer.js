@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { View, Button } from 'react-native';
 import {increaseStr} from './redux/actions';
+import { styles } from './styles';
 
 const buyContainerClassName = "middle container";
 const fishItemClassName = "fish-item";
@@ -46,7 +47,7 @@ class ConnectedBuyContainer extends React.Component {
 
 	createShopItems(){		
 		return (
-			<View>
+			<View style={styles.buyContainer}>
 				<Button onPress={this.updateClickPower.bind(this)} title={"+Str, Cost: " + this.state.strCost + "g"}></Button>
 			</View>
 		);
