@@ -26,7 +26,6 @@ export default class MainContainer extends React.Component {
 	}
 
 	createMainContainer() {
-		console.log("fdsf" + styles.container);
 		return (
 			<View style={styles.container}>
 				<TopContainer>

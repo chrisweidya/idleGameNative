@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { View, Text, Button } from 'react-native';
 import {reelFish} from './redux/actions'
 import AnimatedBar from 'react-native-animated-bar';
-import { styles } from './styles';
+import { styles, colors } from './styles';
 //import Progress from 'react-progressbar';
 
 const barBgClassName = "bar-bg";
@@ -39,7 +39,6 @@ class ConnectedBox extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log("mounted");
 		setInterval(this.props.reelFish.bind(this), this.state.intervalDecrease);
 	}
 
@@ -49,9 +48,9 @@ class ConnectedBox extends React.Component {
 	}
 
 	createBoxElement() {
-		let boxElement = (
-			<View>
-				<Text>{this.state.name}</Text>
+		let boxElement = (				
+			<View style= {styles.boxContainer}>
+				<Text style= {styles.fishText}>{this.state.name}</Text>
 				{this.createProgressBar()}
 				{this.createButton()} 
 			</View>
@@ -62,10 +61,10 @@ class ConnectedBox extends React.Component {
 	createProgressBar() {
 		//if(this.state.progressTimer === null)
 		//	return;
-		//console.log("draw", this.state);
+		//console.log("draw", styles.progressBar);
 		return (
 			<View style={styles.progressContainer}>
-				<AnimatedBar progress={this.state.fillAmount}/>
+				<AnimatedBar progress={this.state.fillAmount} barColor={colors.pink1} fillColor={colors.pink2} height={20}/>
 			</View>
 		);
 	}
@@ -84,8 +83,10 @@ class ConnectedBox extends React.Component {
 
 	createButton() {
 		return (
-			<Button onPress={this.buttonClicked.bind(this)} title={'Reel'}>
-			</Button>
+			<View style={styles.reelButtonContainer}>
+				<Button onPress={this.buttonClicked.bind(this)} title={'Reel'}>
+				</Button>
+			</View>
 		);
 	}	
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { View, Text } from 'react-native';
+import { Dropdown } from 'react-native-material-dropdown';
 import {changeLocation} from './redux/actions';
 import {resetFish} from './redux/actions';
 import { styles } from './styles';
-//import Dropdown from 'react-dropdown';
 import Box from './box.js';
 
 const fishingContainerClassName = "left container";
@@ -45,7 +45,7 @@ class ConnectedFishingContainer extends React.Component {
 	}
 
 	moveArea(tier) {
-		this.props.changeLocation(tier.value);
+		this.props.changeLocation(tier);
 		this.props.resetFish();
 	}
 	/*
@@ -67,26 +67,20 @@ class ConnectedFishingContainer extends React.Component {
 	createAreaDropdown() {
 		if(this.state.maxTier === 1)
 			return;
-
+		return (
+				<Dropdown label='Fishing location:' value={this.state.title} data={this.state.locationList} onChangeText={this.moveArea.bind(this)} 
+				containerStyle={styles.dropdownContainer} labelHeight={16} rippleInsets={{top: 8, bottom: 0}}/>
+		);
 			//<Dropdown className="dropdown" options={this.state.locationList} onChange={this.moveArea.bind(this)} value={this.state.title} placeholder="Select an option" />
-		return;
 	}
 
 	createLeftContainer() {
 		return (
-			<View style={styles.fishingContainer}> 
-				<Text>{this.state.title}</Text> 
-				{this.createBoxes()}
+			<View style={styles.fishingContainer}> 		
+				{this.createAreaDropdown()}
+				{this.createBoxes()}			
 			</View>
 		);
-		/*
-		return (
-			<div key={this.state.title} className={fishingContainerClassName}> 
-				<h2>{this.state.title}</h2> 
-				{this.createBoxes()}
-				{this.createAreaDropdown()}
-			</div>
-		);*/
 	}
 
 	render() {
