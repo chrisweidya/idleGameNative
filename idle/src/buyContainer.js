@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { View, Button } from 'react-native';
+import { View, Button, Text, TouchableHighlight } from 'react-native';
 import {increaseStr} from './redux/actions';
-import { styles } from './styles';
+import { styles, colors } from './styles';
 
 const buyContainerClassName = "middle container";
 const fishItemClassName = "fish-item";
@@ -39,7 +39,7 @@ class ConnectedBuyContainer extends React.Component {
 
 	createShop() {
 		return (
-			<View>
+			<View style={styles.buyContainer}>
 				{this.createShopItems()}
 			</View>
 		);
@@ -47,9 +47,11 @@ class ConnectedBuyContainer extends React.Component {
 
 	createShopItems(){		
 		return (
-			<View style={styles.buyContainer}>
-				<Button onPress={this.updateClickPower.bind(this)} title={"+Str, Cost: " + this.state.strCost + "g"}></Button>
-			</View>
+				<TouchableHighlight onPress={this.updateClickPower.bind(this)} style={styles.buyButtonContainer} underlayColor={colors.yellow2}>
+					<View >
+						<Text style={styles.buttonText}>{"+Str, Cost: " + this.state.strCost + "g"}</Text>
+					</View>
+				</TouchableHighlight>
 		);
 	}
 	render() {

@@ -44,7 +44,9 @@ class ConnectedFishingContainer extends React.Component {
 		this.state.title = nextProps.location;
 	}
 
-	moveArea(tier) {
+	moveArea(tier, index) {
+		if(this.state.locationList[index].label == this.state.title)
+			return;
 		this.props.changeLocation(tier);
 		this.props.resetFish();
 	}

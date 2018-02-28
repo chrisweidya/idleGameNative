@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TouchableHighlight } from 'react-native';
 import {reelFish} from './redux/actions'
 import AnimatedBar from 'react-native-animated-bar';
 import { styles, colors } from './styles';
@@ -59,12 +59,9 @@ class ConnectedBox extends React.Component {
 	}
 
 	createProgressBar() {
-		//if(this.state.progressTimer === null)
-		//	return;
-		//console.log("draw", styles.progressBar);
 		return (
 			<View style={styles.progressContainer}>
-				<AnimatedBar progress={this.state.fillAmount} barColor={colors.pink1} fillColor={colors.pink2} height={20}/>
+				<AnimatedBar progress={this.state.fillAmount} barColor={colors.pink1} fillColor={colors.pink2} height={16}/>
 			</View>
 		);
 	}
@@ -83,10 +80,11 @@ class ConnectedBox extends React.Component {
 
 	createButton() {
 		return (
-			<View style={styles.reelButtonContainer}>
-				<Button onPress={this.buttonClicked.bind(this)} title={'Reel'}>
-				</Button>
-			</View>
+			<TouchableHighlight style={styles.reelButtonContainer} onPress={this.buttonClicked.bind(this)} underlayColor={colors.green2}>
+				<View >
+					<Text style={styles.reelText}>{"Reel"}</Text>
+				</View>
+			</TouchableHighlight>
 		);
 	}	
 

@@ -79,8 +79,12 @@ export const sellFish = fishName => {
 }
 
 export const changeLocation = tier => {
+	currState = store.getState();
 	let location = FishCreator.getArea(tier);
-	console.log(tier);
+	if(currState.location.currLocation == location)
+		return {
+			type: articles.NOTHING
+		}
 	return {
 		type: articles.CHANGE_LOCATION, newLocation: location, newTier: tier
 	}

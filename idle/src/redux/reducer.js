@@ -48,6 +48,9 @@ const rootReducer = (state = initialState, action) => {
 			res = { ...state, articles: [...state.articles, action.payload ]};
 			return res;
 		}
+		case articles.NOTHING: {
+			return state;
+		}
 		case articles.INCREASE_STR: {			
 			res = { ...state, stats: {...state.stats, str: action.newStr, strCost: action.newStrCost, gold: action.newGold}, messages: action.newMessages};
 			//console.log(res);

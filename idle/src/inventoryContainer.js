@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TouchableHighlight } from 'react-native';
 import {sellFish} from './redux/actions';
 import FishCreator from './fishCreator.js';
+import { styles, colors } from './styles';
 
 'use strict';
 
@@ -43,8 +44,7 @@ class ConnectedInventoryContainer extends React.Component {
 
 	createInventoryContainer() {
 		return (
-			<View>
-				<Text>{this.state.title}</Text>
+			<View style={styles.inventoryContainer}>
 				{this.createGoldText()}
 				{this.createFishList()}
 			</View>
@@ -54,7 +54,7 @@ class ConnectedInventoryContainer extends React.Component {
 	createGoldText() {
 		let text = 'Gold: ' + this.state.gold;
 		if(this.state.gold != null) {
-			return (<Text>{text}</Text>)
+			return (<Text style={styles.goldText}>{text}</Text>)
 		}
 	}
 
@@ -65,9 +65,11 @@ class ConnectedInventoryContainer extends React.Component {
 				return;
 			else
 				return (
-					<View key={fish[0] + fish[1] + "button"}>
-						<Button onPress={this.sellFish.bind(this, fish[0])} title={"Sell " + fish[1] + " " + fish[0]}></Button>
-					</View>
+					<TouchableHighlight key={fish[0] + fish[1] + "button"} style={styles.sellButtonContainer} onPress={this.sellFish.bind(this, fish[0])} underlayColor={colors.green2}>
+						<View>
+							<Text>{"Sell " + fish[1] + " " + fish[0]}</Text>
+						</View>
+					</TouchableHighlight>
 				);
 		});
 		return caughtFishes;
